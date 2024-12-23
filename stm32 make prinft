@@ -1,0 +1,8 @@
+#include “stdio.h”
+
+int putchar( int ch )
+{
+    while( !( USART2->SR & 0X80 ) ); //循环发送,直到发送完毕
+    USART2->DR = ( uint8_t ) ch;//直接操作寄存器，提高执行效率
+    return ch;
+}
