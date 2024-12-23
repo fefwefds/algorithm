@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include "math.h"
+/* 平面坐标算法 */
 
 float motor_mid_angle_x;//电机的坐标中值(一般水平为坐标原点)
 float motor_set_angle;//电机设定的角度（一般是给电机的值）
