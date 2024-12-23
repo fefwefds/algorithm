@@ -1,0 +1,24 @@
+#include "stdio.h"
+#include "math.h"
+
+float motor_mid_angle_x;//电机的坐标中值(一般水平为坐标原点)
+float motor_set_angle;//电机设定的角度（一般是给电机的值）
+float motor_set_x;//电机值需要加减的值
+float real_err_x;//真实的坐标差值
+float motor_real_distance;//电机距离目标平面的真实距离(该平面需要与电机水平线相垂直)
+float K_x;//坐标转换系数
+
+void motor_angle_control()
+{
+    motor_set_x=atan(real_err_x/motor_real_distance)*K_x;
+    motor_set_angle=motor_mid_angle_x+motor_set_angle;
+}
+
+/*
+在运用该算法前需要进行一个测量，测量出其中的电
+机距离目标平面的真实距离motor_real_distance，
+然后设定一个目标距离real_err_x和电机应该加减
+的值motor_set_x,然后计算出其中的坐标转化系数
+K_x,然后我们就可以在一个固定距离的平面内精准
+跑到目标坐标；
+*/
